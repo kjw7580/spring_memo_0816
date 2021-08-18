@@ -1,0 +1,30 @@
+
+#wrap {
+	width:1200px;
+	height:800px;
+	margin:auto;
+}
+
+header {
+	height:70px;
+	background-color:#bbbbbb;
+}
+
+section {
+	height:500px;
+}
+
+.login-box {
+	width:400px;
+	height:400px;
+}
+
+.signup-box {
+	width:400px;
+	height:500px;		
+}
+
+footer {
+	height:50px;
+	background-color:#bbbbbb;
+}
