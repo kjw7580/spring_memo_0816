@@ -35,8 +35,8 @@
 	<script>
 		$(document).ready(function() {
 			
-			$("#loginForm").on("submit", function() {
-				
+			$("#loginForm").on("submit", function(e) {
+
 				e.preventDefault();
 				
 				var loginId = $("#loginIdInput").val();
