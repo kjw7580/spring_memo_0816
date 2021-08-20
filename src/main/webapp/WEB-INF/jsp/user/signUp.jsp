@@ -20,26 +20,96 @@
 			<div class="signup-box h-100 d-flex justify-content-center align-items-center">
 				<div class="w-100">
 					<h1 class="text-center">회원가입</h1>
-					<div class="input-group mt-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text">ID</span>
+					<form method="post" action="/user/sign_up" id="signupForm">
+						<div class="input-group mt-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">ID</span>
+							</div>
+							<input type="text" id="loginIdInput" name="loginId" class="form-control" placeholder="아이디">
 						</div>
-						<input type="text" class="form-control" placeholder="Username">
-					</div>
-					<div class="input-group mt-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text">P/W</span>
+						<div class="input-group mt-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">P/W</span>
+							</div>
+							<input type="password" id="passwordInput" name="password" class="form-control" placeholder="비밀번호">
 						</div>
-						<input type="password" class="form-control" placeholder="비밀번호">
-					</div>
-					<input type="password" class="form-control mt-3" placeholder="비밀번호 확인">
-					<input type="text" class="form-control mt-3" placeholder="이름">
-					<input type="text" class="form-control mt-3" placeholder="이메일 주소">
-					<button type="submit" class="btn btn-secondary btn-block mt-3">가입</button>
+						<input type="password" id="passwordConfirmInput" class="form-control mt-3" placeholder="비밀번호 확인">
+						<small id="errorPassword" class="text-danger d-none">비밀번호가 일치하지 않습니다.</small>
+						<small id="successPassword" class="text-success d-none">비밀번호가 일치합니다.</small>
+						<input type="text" id="nameInput" name="name" class="form-control mt-3" placeholder="이름">
+						<input type="text" id="emailInput" name="email" class="form-control mt-3" placeholder="이메일 주소">
+						
+						<button type="submit" id="signUpBtn" class="btn btn-secondary btn-block mt-3">가입</button>
+					</form>
 				</div>
 			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#signupForm").on("submit", function(e) {
+				
+				e.preventDefault();
+				
+				var loginId = $("#loginIdInput").val();
+				var password = $("#passwordInput").val();
+				var passwordConfirm = $("#passwordConfirmInput").val();
+				var name = $("#nameInput").val().trim();
+				var email = $("#emailInput").val().trim();
+				
+				if(loginId == null || loginId == "") {
+					alert("아이디를 입력해주세요.");
+					return false;
+				}
+				
+				if(password == null || password == "") {
+					alert("비밀번호를 입력해주세요.");
+					return false;
+				}
+				
+				if(password != passwordConfirm) {
+					$("#errorPassword").removeClass("d-none");
+					$("#successPassword").addClass("d-none");
+					return false;
+				}
+				
+				if(password == passwordConfirm) {
+					$("#successPassword").removeClass("d-none");
+					$("#errorPassword").addClass("d-none");
+				}
+				
+				if(name == null || name == "") {
+					alert("이름을 입력해주세요.");
+					return false;
+				}
+				
+				if(email == null || email == "") {
+					alert("이메일을 입력해주세요.");
+					return false;
+				}
+				
+				$.ajax({
+					type:"post",
+					url:"/user/sign_up",
+					data:{"loginId":loginId, "password":password, "name":name, "email":email},
+					success:function(data) {
+						if(data.result == "success") {
+							location.href="/user/signin_view";
+							
+						} else {
+							alert("회원 가입 실패");
+						}
+					},
+					error:function(e) {
+						alert("회원 가입 실패");
+					}
+				});
+				
+				return false;
+			});
+		});
+	</script>
 </body>
 </html>

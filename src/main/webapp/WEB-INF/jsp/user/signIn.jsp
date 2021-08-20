@@ -20,14 +20,56 @@
 			<div class="login-box h-100 d-flex justify-content-center align-items-center">
 				<div class="w-100">
 					<h1 class="text-center">로그인</h1>
-					<input type="text" class="form-control mt-3" placeholder="아이디">
-					<input type="text" class="form-control mt-3" placeholder="비밀번호">
-					<button type="submit" class="btn btn-secondary btn-block mt-3">로그인</button>
+					<form id="loginForm">
+						<input type="text" id="loginIdInput" class="form-control mt-3" placeholder="아이디">
+						<input type="password" id="passwordInput" class="form-control mt-3" placeholder="비밀번호">
+						<button id="loginBtn" type="submit" class="btn btn-secondary btn-block mt-3">로그인</button>
+					</form>
 					<div class="mt-3 text-right"><a href="/user/signup_view">회원가입</a></div>
 				</div>
 			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
 	</div>
+	
+	<script>
+		$(document).ready(function() {
+			
+			$("#loginForm").on("submit", function() {
+				
+				e.preventDefault();
+				
+				var loginId = $("#loginIdInput").val();
+				var password = $("#passwordInput").val();
+				
+				if(loginId == null || loginId == "") {
+					alert("아이디를 입력해주세요.");
+					return;
+				}
+				
+				if(password == null || password == "") {
+					alert("비밀번호를 입력해주세요.");
+					return;
+				}
+				
+				$.ajax({
+					type:"post",
+					url:"/user/sign_in",
+					data:{"loginId":loginId, "password":password},
+					success:function(data) {
+						if(data.result == "success") {
+							alert("로그인 성공");
+						} else {
+							alert("아이디 비밀번호를 확인하세요.");
+						}
+					},
+					error:function(e) {
+						alert("로그인실패");
+					}
+					
+				});
+			});
+		});
+	</script>
 </body>
 </html>
