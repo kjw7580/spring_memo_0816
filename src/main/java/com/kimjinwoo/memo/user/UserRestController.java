@@ -42,7 +42,7 @@ public class UserRestController {
 	
 	@PostMapping("/sign_in")
 	public Map<String, String> signIn(
-			@RequestParam("login") String loginId
+			@RequestParam("loginId") String loginId
 			, @RequestParam("password") String password
 			, HttpServletRequest request){
 	
@@ -52,6 +52,7 @@ public class UserRestController {
 			result.put("result", "success");
 			
 			HttpSession session = request.getSession();
+			session.setAttribute("userId", user.getId());
 			session.setAttribute("userLoginId", user.getLoginId());
 			session.setAttribute("userName", user.getName());
 			
