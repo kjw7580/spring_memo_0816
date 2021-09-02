@@ -24,4 +24,55 @@
  		)
  		
  	</insert>
+ 	
+ 	<select id="selectMemoList" parameterType="int" 
+ 	resultType="com.kimjinwoo.memo.post.model.Post">
+ 		SELECT
+ 			`id`
+ 			, `userId`
+ 			, `subject`
+ 			, `content`
+ 			, `imagePath`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`post`
+ 		WHERE
+ 			`userId` = #{userId}
+ 		ORDER BY `id` DESC
+ 	</select>
+ 	
+ 	<select id="selectMemo" parameterType="map" resultType="com.kimjinwoo.memo.post.model.Post">
+ 		SELECT
+ 			`id`
+ 			, `userId`
+ 			, `subject`
+ 			, `content`
+ 			, `imagePath`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`post`
+ 		WHERE
+ 			`userId` = #{userId}
+ 			AND `id` = #{id}
+ 	</select>
+ 	
+ 	<update id="updatePost" parameterType="map">
+ 		UPDATE
+ 			`post`
+ 		SET
+ 			`subject` = #{subject}
+ 			, `content` = #{content}
+ 		WHERE
+ 			`id` = #{id}
+ 	</update>
+ 	
+ 	<delete id="deletePost" parameterType="int">
+ 		DELETE FROM
+ 			`post`
+ 		WHERE
+ 			`id` = #{id}
+ 			AND `userId` = #{userId}
+ 	</delete>
  </mapper>

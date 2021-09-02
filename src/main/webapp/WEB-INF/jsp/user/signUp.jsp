@@ -16,7 +16,7 @@
 <body>
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
-		<section class="d-flex justify-content-center">
+		<section class="d-flex justify-content-center my-5">
 			<div class="signup-box h-100 d-flex justify-content-center align-items-center">
 				<div class="w-100">
 					<h1 class="text-center">회원가입</h1>

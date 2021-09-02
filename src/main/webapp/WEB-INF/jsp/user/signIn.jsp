@@ -16,7 +16,7 @@
 <body>
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp" />
-		<section class="content d-flex justify-content-center">
+		<section class="content d-flex justify-content-center my-5">
 			<div class="login-box h-100 d-flex justify-content-center align-items-center">
 				<div class="w-100">
 					<h1 class="text-center">로그인</h1>
@@ -58,7 +58,7 @@
 					data:{"loginId":loginId, "password":password},
 					success:function(data) {
 						if(data.result == "success") {
-							alert("로그인 성공");
+							location.href="/post/list_view";
 						} else {
 							alert("아이디 비밀번호를 확인하세요.");
 						}
