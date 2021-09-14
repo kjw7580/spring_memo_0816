@@ -28,15 +28,37 @@ public class PostController {
 	}
 	
 	@GetMapping("/list_view")
-	public String listView(Model model
+	public String listView(
+			@RequestParam(value = "nextId", required = false) Integer nextId
+			, @RequestParam(value = "prevId", required = false) Integer prevId
+			, Model model
 			, HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
-		List<Post> memoList = postBO.getMemoList(userId);
+		// 10 9 8 | 7 6 5 | 4 3 2 | 1
+		// 5 6 7 | 8 9 10
+		List<Post> memoList = postBO.getMemoList(userId, nextId, prevId);
+		
+		int currentNextId = 0;
+		int currentPrevId = 0;
+		
+		// 마지막 페이지가 아니라면 nextId 셋팅
+		int listLastIndex = memoList.get(memoList.size() - 1).getId();
+		if(!postBO.isLastPage(userId, listLastIndex)) {
+			currentNextId = listLastIndex;
+		}
+		
+		int listFirstIndex = memoList.get(0).getId();
+		if(!postBO.isFirstPage(userId, listFirstIndex)) {
+			currentPrevId = listFirstIndex;
+		}
+		
 		model.addAttribute("memoList", memoList);
+		model.addAttribute("nextId", currentNextId);
+		model.addAttribute("prevId", currentPrevId);
 		
 		return "post/memoList";
 	}

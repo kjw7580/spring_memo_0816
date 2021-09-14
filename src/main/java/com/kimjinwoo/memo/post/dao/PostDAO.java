@@ -18,6 +18,20 @@ public interface PostDAO {
 	
 	public List<Post> selectMemoList(@Param("userId") int userId);
 	
+	public List<Post> selectMemoListByNextId(
+			@Param("userId") int userId
+			, @Param("nextId") int nextId);
+
+	public List<Post> selectMemoListByPrevId(
+			@Param("userId") int userId
+			, @Param("prevId") int prevId);
+	
+	// id가 가장 작은 행
+	public Post lastPost(@Param("userId") int userId);
+	
+	// id가 가장 큰 행
+	public Post firstPost(@Param("userId") int userId);
+	
 	public Post selectMemo(@Param("id") int id
 			, @Param("userId") int userId);
 	

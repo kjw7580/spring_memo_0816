@@ -41,6 +41,20 @@
 					</tbody>
 				</table>
 				
+				<div class="d-flex justify-content-between">
+					<div>
+						<c:if test="${prevId ne 0 }">
+							<a href="/post/list_view?prevId=${prevId }">&lt;이전</a>
+						</c:if>
+					</div>
+				
+					<div class="text-right">
+						<c:if test="${nextId ne 0 }">
+							<a href="/post/list_view?nextId=${nextId }">다음></a>
+						</c:if>
+					</div>
+				</div>
+				
 				<div class="text-right">
 					<a href="/post/create_view" class="btn btn-info">글쓰기</a>
 				</div>

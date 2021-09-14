@@ -1,5 +1,6 @@
 package com.kimjinwoo.memo.post.bo;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,27 @@ public class PostBO {
 		return postDAO.insertPost(userId, title, content, filePath);
 	}
 	
-	public List<Post> getMemoList(int userId) {
+	public List<Post> getMemoList(int userId, Integer nextId, Integer prevId) {
+		if(nextId != null) {
+			return postDAO.selectMemoListByNextId(userId, nextId);
+		} else if(prevId != null) {	// 이전버튼
+			// 11 12 13
+			
+			// 13 12 11
+			List<Post> postList = postDAO.selectMemoListByPrevId(userId, prevId);
+			Collections.reverse(postList);
+			return postList;
+		}
+		
 		return postDAO.selectMemoList(userId);
+	}
+	
+	public boolean isLastPage(int userId, int nextId) {
+		return postDAO.lastPost(userId).getId() == nextId;
+	}
+	
+	public boolean isFirstPage(int userId, int prevId) {
+		return postDAO.firstPost(userId).getId() == prevId;
 	}
 	
 	public Post getMemo(int id, int userId) {
