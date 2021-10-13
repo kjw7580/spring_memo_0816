@@ -41,19 +41,19 @@
 
 * 회원가입
  #### * package : [com.kimjinwoo.memo.user.*](https://github.com/kjw7580/spring_memo_0816/tree/develop/src/main/java/com/kimjinwoo/memo/user)
- #### * view : [/webapp/WEB-INF/jsp/*](https://github.com/kjw7580/spring_memo_0816/tree/develop/src/main/webapp/WEB-INF/jsp/user)
+ #### * view : [/webapp/WEB-INF/jsp/user/*](https://github.com/kjw7580/spring_memo_0816/tree/develop/src/main/webapp/WEB-INF/jsp/user)
 * 로그인 및 로그아웃
  #### * package : [com.kimjinwoo.memo.user.*](https://github.com/kjw7580/spring_memo_0816/tree/develop/src/main/java/com/kimjinwoo/memo/user)
- #### * view : [/webapp/WEB-INF/jsp/*](https://github.com/kjw7580/spring_memo_0816/tree/develop/src/main/webapp/WEB-INF/jsp/user)
+ #### * view : [/webapp/WEB-INF/jsp/user/*](https://github.com/kjw7580/spring_memo_0816/tree/develop/src/main/webapp/WEB-INF/jsp/user)
 * 이미지 첨부 글쓰기
  #### * package : [com.kimjinwoo.memo.post.*](https://github.com/kjw7580/spring_memo_0816/tree/develop/src/main/java/com/kimjinwoo/memo/post)
- #### * view : [/webapp/WEB-INF/jsp/*](https://github.com/kjw7580/spring_memo_0816/tree/develop/src/main/webapp/WEB-INF/jsp/post)
+ #### * view : [/webapp/WEB-INF/jsp/post/*](https://github.com/kjw7580/spring_memo_0816/tree/develop/src/main/webapp/WEB-INF/jsp/post)
 * 글 수정 및 삭제
  #### * package : [com.kimjinwoo.memo.post.*](https://github.com/kjw7580/spring_memo_0816/tree/develop/src/main/java/com/kimjinwoo/memo/post)
- #### * view : [/webapp/WEB-INF/jsp/*](https://github.com/kjw7580/spring_memo_0816/tree/develop/src/main/webapp/WEB-INF/jsp/post)
+ #### * view : [/webapp/WEB-INF/jsp/post/*](https://github.com/kjw7580/spring_memo_0816/tree/develop/src/main/webapp/WEB-INF/jsp/post)
 * 리스트 페이징
  #### * package : [com.kimjinwoo.memo.post.*](https://github.com/kjw7580/spring_memo_0816/tree/develop/src/main/java/com/kimjinwoo/memo/post)
- #### * view : [/webapp/WEB-INF/jsp/*](https://github.com/kjw7580/spring_memo_0816/tree/develop/src/main/webapp/WEB-INF/jsp/post)
+ #### * view : [/webapp/WEB-INF/jsp/post/*](https://github.com/kjw7580/spring_memo_0816/tree/develop/src/main/webapp/WEB-INF/jsp/post)
  
 ## :computer: 데모
 
